@@ -22,15 +22,43 @@
  *  @author A.G. Medrano-Chavez
 */
 class Status {
+private:
+  static const Status DONE;
+  /** @brief A variable holding the node status */
+  int status;
+  /** @brief Default constructor */
+  Status() : status(-1) { }
+  /** @brief Overloaded constructor taking values from the static variables 
+   *  from this class */
+  Status(int s) : status(s) { }
 public:
   /** @brief Status associated to the node that starting a protocol */
-  static const int INITIATOR = 0;
+  static const Status UNSPECIFIED;
+  /** @brief Status associated to the node that starting a protocol */
+  static const Status INITIATOR;
   /** @brief Status associated to nodes that have not received any message */
-  static const int IDLE = 1;
-  /** @brief Status associated to nodes that have received a message, at least*/
-  static const int ACTIVE = 2;
+  static const Status IDLE;
+  /** @brief Status associated to nodes waiting for a message */
+  static const Status ACTIVE;
+  /** @brief Status associated to nodes unactive nodes */
+  static const Status SLEEP;
   /** @brief Status associated to nodes that do not have any actions to do */
-  static const int DONE = 3;
+  static const Status DONE;
+  /** @brief Assings a possible status of this set*/
+  virtual Status& operator=(const Status& s) {
+    status = s.status; 
+    return *this; 
+  }
+  /** @brief Overloaded constructor taking values from the static variables 
+   *  from this class */
+  Status(const Status& s) : status(s.status) { }
 };
+
+const Status Status::UNSPECIFIED(-1);
+const Status Status::INITIATOR(0);
+const Status Status::IDLE(1);
+const Status Status::ACTIVE(2);
+const Status Status::SLEEP(3);
+const Status Status::DONE(4);
 
 #endif // STATUS_H
