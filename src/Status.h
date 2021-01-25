@@ -16,9 +16,11 @@
 #if !defined(STATUS_H)
 #define STATUS_H
 
-/** @brief This class could be extended if the current set of possible status
+#include <iostream>
+
+/** @brief This class could be modified if the current set of possible status
  *  is not enough to implement a distributed algorithm. Take care about the
- *  valuces assigned to each item.
+ *  values assigned to each item. Do not forget 
  *  @author A.G. Medrano-Chavez
 */
 class Status {
@@ -26,8 +28,6 @@ private:
   static const Status DONE;
   /** @brief A variable holding the node status */
   int status;
-  /** @brief Default constructor */
-  Status() : status(-1) { }
   /** @brief Overloaded constructor taking values from the static variables 
    *  from this class */
   Status(int s) : status(s) { }
@@ -44,14 +44,34 @@ public:
   static const Status SLEEP;
   /** @brief Status associated to nodes that do not have any actions to do */
   static const Status DONE;
+  /** @brief Default constructor */
+  Status() : status(-1) { }
+  /** @brief Overloaded constructor taking values from the static variables 
+   *  from this class */
+  Status(const Status& s) : status(s.status) { }
   /** @brief Assings a possible status of this set*/
   virtual Status& operator=(const Status& s) {
     status = s.status; 
     return *this; 
   }
-  /** @brief Overloaded constructor taking values from the static variables 
-   *  from this class */
-  Status(const Status& s) : status(s.status) { }
+  /** @brief Assings a possible status of this set*/
+  virtual bool operator==(const Status& s) {
+    return status == s.status; 
+  }
+  /** @brief Returns a c-style string containing the name of the status */
+  virtual const char* str() const {
+    switch (status) {
+    case 0:  return "INITIATOR";
+    case 1:  return "IDLE";     
+    case 2:  return "ACTIVE";   
+    case 3:  return "SLEEP";    
+    case 4:  return "DONE";     
+    default: return "UNDEFINED";
+    }
+  }
+  friend std::ostream& operator<<(std::ostream& os, const Status& s) {
+    return os << s.str();
+  }
 };
 
 const Status Status::UNSPECIFIED(-1);
