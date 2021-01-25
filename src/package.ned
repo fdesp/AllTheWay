@@ -1,0 +1,3 @@
+package dsbase;
+
+@license(LGPL);
