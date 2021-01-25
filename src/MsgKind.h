@@ -29,6 +29,8 @@ public:
   static const int ACK   = 5;
   /** @brief A negative acknowlegdement */
   static const int NACK  = 6;
+  /** @brief A token */
+  static const int TOKEN = 7;
   /** @brief A timer implemented as a self-message */
-  static const int TIMER = 7;
+  static const int TIMER = 8;
 };
