@@ -27,8 +27,6 @@ protected:
   omnetpp::cMessage* timer;
   /** @brief A message that must be instanced only when a node creates a message */
   omnetpp::cMessage* msg;
-  /** @brief The time at which an experiment starts */
-  omnetpp::simtime_t startTime;
   /** @brief The current status of this node */
   Status status;
 protected:
@@ -53,7 +51,7 @@ protected:
   );
 public:
   /** @brief Default constructor */
-  BaseNode() : timer(nullptr), msg(nullptr), startTime(0.0), status() { }
+  BaseNode() : timer(nullptr), msg(nullptr), status() { }
   /** @brief Default destructor which tries to delete the timer */
   virtual ~BaseNode() { cancelAndDelete(timer); }
 };

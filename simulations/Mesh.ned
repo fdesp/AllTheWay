@@ -24,8 +24,6 @@ import dsbase.simulations.Link;
 network Mesh {
     parameters:
         @display("bgb=300,300");
-        int initiator;
-        node[*].initiator = initiator;
     submodules:
         node[6] : ; // Indicate the kind of node
     connections:
