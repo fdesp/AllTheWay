@@ -13,14 +13,8 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-<<<<<<< HEAD
 package dsbase.simulations;
 import dsbase.Shout;
-=======
-package dsbase.simulations.simulations;
-// Import the module derived from BaseNode
-// import dsbase.;
->>>>>>> a3af847250f5853ab40fec3678645879def293ab
 
 import dsbase.simulations.Link;
 
@@ -29,17 +23,11 @@ import dsbase.simulations.Link;
 //
 network Mesh {
     parameters:
-<<<<<<< HEAD
         @display("bgb=500,500");
         int initiator;
         node[*].initiator = initiator;
     submodules:
         node[10] : Shout;
-=======
-        @display("bgb=300,300");
-    submodules:
-        node[10] : ; // Indicate the kind of module derived from BaseNode
->>>>>>> a3af847250f5853ab40fec3678645879def293ab
     connections:
         node[0].port++ <--> Link <--> node[1].port++;
         node[0].port++ <--> Link <--> node[3].port++;

@@ -28,12 +28,8 @@ omnetpp::cMessage* BaseNode::localFlooding(
 
 omnetpp::cMessage* BaseNode::localMulticast(
   omnetpp::cMessage* msg,
-<<<<<<< HEAD
   const std::vector<int>& destination
 ) {
-=======
-  const std::vector<int>& destination) {
->>>>>>> a3af847250f5853ab40fec3678645879def293ab
   if (msg) {
     int n = gateSize("port$o");
     for (int i = 0; i < destination.size() - 1; i++)

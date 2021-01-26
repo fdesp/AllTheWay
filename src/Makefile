@@ -1,12 +1,12 @@
 #
-# OMNeT++/OMNEST Makefile for ds.ex4.spt
+# OMNeT++/OMNEST Makefile for sim
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep
+#  opp_makemake -f --deep -o sim
 #
 
 # Name of target to be created (-o option)
-TARGET = ds.ex4.spt$(D)$(EXE_SUFFIX)
+TARGET = sim$(D)$(EXE_SUFFIX)
 TARGET_DIR = .
 
 # User interface (uncomment one) (-u option)
