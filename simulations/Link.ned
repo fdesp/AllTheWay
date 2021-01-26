@@ -1,6 +1,6 @@
-package flooding.simulations;
+package dsbase.simulations;
 
 channel Link extends ned.DelayChannel {
   parameters:
-      delay = exponential(1s);
+      delay = 1s;
 }

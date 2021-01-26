@@ -1,12 +1,12 @@
 #
-# OMNeT++/OMNEST Makefile for ds.base
+# OMNeT++/OMNEST Makefile for ds.ex4.spt
 #
 # This file was generated with the command:
 #  opp_makemake -f --deep
 #
 
 # Name of target to be created (-o option)
-TARGET = ds.base$(D)$(EXE_SUFFIX)
+TARGET = ds.ex4.spt$(D)$(EXE_SUFFIX)
 TARGET_DIR = .
 
 # User interface (uncomment one) (-u option)
@@ -30,7 +30,7 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/BaseNode.o
+OBJS = $O/BaseNode.o $O/Shout.o $O/Status.o
 
 # Message files
 MSGFILES =

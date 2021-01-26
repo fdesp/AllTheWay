@@ -17,6 +17,7 @@
 #define BASENODE_H
 
 #include <omnetpp.h>
+#include <vector>
 #include "Status.h"
 #include "MsgKind.h"
 
@@ -30,9 +31,29 @@ protected:
   omnetpp::simtime_t startTime;
   /** @brief The current status of this node */
   Status status;
+protected:
+  /** @brief Broadcasts a message to N(x) 
+   *  @param first - a valid pointer to a message
+   *  @return a null pointer
+  */
+  omnetpp::cMessage* localBroadcast(omnetpp::cMessage*);
+  /** @brief Broadcasts a message to N(x) - {senderID}
+   *  @param first - a valid pointer to a message
+   *  @param second - the ID of the sender
+   *  @return a null pointer
+  */
+  omnetpp::cMessage* localFlooding(omnetpp::cMessage*, int);
+  /** @brief Multicasts a message to a subset of N(x)
+   *  @param first - a valid pointer to a message
+   *  @param second - a vector holding the IDs of receivers
+   *  @return a null pointer
+  */
+  omnetpp::cMessage* localMulticast(
+    omnetpp::cMessage*, const std::vector<int>&
+  );
 public:
   /** @brief Default constructor */
-  BaseNode() : timer(nullptr), msg(nullptr), startTime(0.0) { }
+  BaseNode() : timer(nullptr), msg(nullptr), startTime(0.0), status() { }
   /** @brief Default destructor which tries to delete the timer */
   virtual ~BaseNode() { cancelAndDelete(timer); }
 };
