@@ -5,7 +5,7 @@ Define_Module(BaseNode);
 omnetpp::cMessage* BaseNode::localBroadcast(omnetpp::cMessage* msg) {
   if (msg) {
     int n = gateSize("port$o");
-    for (int i = 0; i < n -1; i++)
+    for (int i = 0; i < n-1; i++)
       send(msg->dup(), "port$o", i);
     send(msg, "port$o", n-1);
   }

@@ -14,39 +14,29 @@
 // 
 
 package dsbase.simulations;
-import dsbase.Shout;
+import dsbase.; //Complete this path with the simple module representing a node
 
 import dsbase.simulations.Link;
 
 //
-// Generated network with random topology (10 nodes, 20 edges, seed=0).
+// Generated network with random topology (6 nodes, 10 edges, seed=1).
 //
 network Mesh {
     parameters:
-        @display("bgb=500,500");
+        @display("bgb=300,300");
         int initiator;
         node[*].initiator = initiator;
     submodules:
-        node[10] : Shout;
+        node[6] : ; // Indicate the kind of node
     connections:
         node[0].port++ <--> Link <--> node[1].port++;
-        node[0].port++ <--> Link <--> node[3].port++;
+        node[0].port++ <--> Link <--> node[2].port++;
+        node[0].port++ <--> Link <--> node[4].port++;
         node[0].port++ <--> Link <--> node[5].port++;
-        node[0].port++ <--> Link <--> node[6].port++;
-        node[0].port++ <--> Link <--> node[8].port++;
-        node[1].port++ <--> Link <--> node[2].port++;
         node[1].port++ <--> Link <--> node[3].port++;
         node[1].port++ <--> Link <--> node[4].port++;
-        node[2].port++ <--> Link <--> node[4].port++;
-        node[2].port++ <--> Link <--> node[7].port++;
-        node[2].port++ <--> Link <--> node[8].port++;
+        node[1].port++ <--> Link <--> node[5].port++;
+        node[2].port++ <--> Link <--> node[5].port++;
         node[3].port++ <--> Link <--> node[5].port++;
-        node[3].port++ <--> Link <--> node[7].port++;
-        node[3].port++ <--> Link <--> node[9].port++;
-        node[4].port++ <--> Link <--> node[6].port++;
-        node[4].port++ <--> Link <--> node[7].port++;
-        node[4].port++ <--> Link <--> node[9].port++;
-        node[5].port++ <--> Link <--> node[6].port++;
-        node[5].port++ <--> Link <--> node[8].port++;
-        node[6].port++ <--> Link <--> node[9].port++;
+        node[4].port++ <--> Link <--> node[5].port++;
 }
