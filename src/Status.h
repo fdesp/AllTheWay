@@ -25,7 +25,6 @@
 */
 class Status {
 private:
-  static const Status DONE;
   /** @brief A variable holding the node status */
   int status;
   /** @brief Overloaded constructor taking values from the static variables 
@@ -73,12 +72,5 @@ public:
     return os << s.str();
   }
 };
-
-const Status Status::UNSPECIFIED(-1);
-const Status Status::INITIATOR(0);
-const Status Status::IDLE(1);
-const Status Status::ACTIVE(2);
-const Status Status::SLEEP(3);
-const Status Status::DONE(4);
 
 #endif // STATUS_H
