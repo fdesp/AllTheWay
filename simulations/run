@@ -1,4 +1,4 @@
 #!/bin/sh
 cd `dirname $0`
-../src/ds_base -n .:../src $*
+../src/sim -n .:../src $*
 # for shared lib, use: opp_run -l ../src/ds_base -n .:../src $*
