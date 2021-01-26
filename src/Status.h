@@ -19,8 +19,8 @@
 #include <iostream>
 
 /** @brief This class could be modified if the current set of possible status
- *  is not enough to implement a distributed algorithm. Take care about the
- *  values assigned to each item. Do not forget 
+ *  is not enough to implement a distributed algorithm. Take care about 
+ *  processing the status into the str() member function
  *  @author A.G. Medrano-Chavez
 */
 class Status {
