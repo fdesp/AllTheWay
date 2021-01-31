@@ -3,8 +3,8 @@
 Register_Abstract_Class(BaseNode);
 
 omnetpp::cMessage* BaseNode::localBroadcast(omnetpp::cMessage* msg) {
-  if (msg) {
-    int n = gateSize("port$o");
+  int n = gateSize("port$o");
+  if (msg && n > 0) {
     for (int i = 0; i < n -1; i++)
       send(msg->dup(), "port$o", i);
     send(msg, "port$o", n-1);
@@ -14,8 +14,8 @@ omnetpp::cMessage* BaseNode::localBroadcast(omnetpp::cMessage* msg) {
 
 omnetpp::cMessage* BaseNode::localFlooding(omnetpp::cMessage* msg) {
   int senderID = msg->getArrivalGate()->getIndex();
-  if (msg) {
-    int n = gateSize("port$o");
+  int n = gateSize("port$o");
+  if (msg && n > 0) {
     for (int i = 0; i < n; i++)
       if (i != senderID)
         send(msg->dup(), "port$o", i);
@@ -28,7 +28,7 @@ omnetpp::cMessage* BaseNode::localMulticast(
   omnetpp::cMessage* msg,
   const std::vector<int>& destination
 ) {
-  if (msg) {
+  if (msg && !destination.empty()) {
     for (auto&& port : destination)
       send(msg->dup(), "port$o", port);
     delete msg;
