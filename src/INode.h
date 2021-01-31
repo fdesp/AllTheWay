@@ -14,9 +14,8 @@
 //
 
 package dsbase;
-import dsbase.INode;
 
-simple BaseNode like INode
+moduleinterface INode
 {
     parameters:
         @display("i=device/laptop");

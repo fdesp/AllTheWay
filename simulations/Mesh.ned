@@ -14,7 +14,7 @@
 // 
 
 package dsbase.simulations;
-import dsbase.; //Complete this path with the simple module representing a node
+import dsbase.INode;
 
 import dsbase.simulations.Link;
 
@@ -24,8 +24,9 @@ import dsbase.simulations.Link;
 network Mesh {
     parameters:
         @display("bgb=300,300");
+        string kind;
     submodules:
-        node[6] : ; // Indicate the kind of node
+        node[6] : <kind> like INode; // Indicate the kind of node
     connections:
         node[0].port++ <--> Link <--> node[1].port++;
         node[0].port++ <--> Link <--> node[2].port++;
