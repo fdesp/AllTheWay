@@ -57,7 +57,7 @@ public:
   /** @brief Default destructor which tries to delete the timer */
   virtual ~BaseNode() { cancelAndDelete(timer); }
   virtual void initialize() = 0;
-  virtual void handleMessage() = 0;
+  virtual void handleMessage(omnetpp::cMessage*) = 0;
 };
 
 #endif // BASENODE_H
