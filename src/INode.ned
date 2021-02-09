@@ -20,6 +20,7 @@ moduleinterface INode
     parameters:
         @display("i=device/laptop");
         double startTime @unit(s); // The time at which simulation starts
+        bool initiator; // Indicates whether this node start the experiment ot not
     gates:
         inout port[];     // Bidirectional link
 }

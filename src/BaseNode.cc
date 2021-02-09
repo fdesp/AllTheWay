@@ -13,15 +13,21 @@ omnetpp::cMessage* BaseNode::localBroadcast(omnetpp::cMessage* msg) {
 }
 
 omnetpp::cMessage* BaseNode::localFlooding(omnetpp::cMessage* msg) {
-  int senderID = msg->getArrivalGate()->getIndex();
-  int n = gateSize("port$o");
-  if (msg && n > 0) {
-    for (int i = 0; i < n; i++)
-      if (i != senderID)
-        send(msg->dup(), "port$o", i);
+  if (msg->getArrivalGate()) {
+    int senderID = msg->getArrivalGate()->getIndex();
+    int n = gateSize("port$o");
+    if (msg && n > 0) {
+      for (int i = 0; i < n; i++)
+        if (i != senderID)
+          send(msg->dup(), "port$o", i);
+      delete msg;
+    }
+    return msg;
+  }
+  else {
+    omnetpp::cRuntimeError("localFlooding: This message has not been sent previosly, not sender to be discarded\n");
     delete msg;
   }
-  return msg;
 }
 
 omnetpp::cMessage* BaseNode::localMulticast(

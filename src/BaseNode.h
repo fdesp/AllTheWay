@@ -56,7 +56,9 @@ public:
   BaseNode() : timer(nullptr), msg(nullptr), startTime(0.0), status() { }
   /** @brief Default destructor which tries to delete the timer */
   virtual ~BaseNode() { cancelAndDelete(timer); }
+  /** @brief Set the initial status of protocols according to its role */
   virtual void initialize() = 0;
+  /** @brief Implement here the protocol actions */
   virtual void handleMessage(omnetpp::cMessage*) = 0;
 };
 
