@@ -16,25 +16,31 @@
 class MsgKind {
 public:
   /** @brief A generic message */
-  static const int MSG       = 0;
+  static const int MSG        = 0;
   /** @brief A common message sent to ask for something */
-  static const int QUERY     = 1;
+  static const int QUERY      = 1;
   /** @brief A common message sent to answer a query */
-  static const int REPLY     = 2;
+  static const int REPLY      = 2;
   /** @brief An affirmative response */
-  static const int YES       = 3;
+  static const int YES        = 3;
   /** @brief An negative response */
-  static const int NO        = 4;
+  static const int NO         = 4;
   /** @brief An acknowlegdement */
-  static const int ACK       = 5;
+  static const int ACK        = 5;
   /** @brief A negative acknowlegdement */
-  static const int NACK      = 6;
+  static const int NACK       = 6;
   /** @brief A token */
-  static const int TOKEN     = 7;
+  static const int TOKEN      = 7;
   /** @brief A timer implemented as a self-message */
-  static const int TIMER     = 8;
+  static const int TIMER      = 8;
   /** @brief An announcement to inform a task is completed */
-  static const int CHECK     = 9;
+  static const int CHECK      = 9;
   /** @brief An message to inform global termination */
-  static const int TERMINATE = 10;
+  static const int TERMINATION  = 10;
+  /** brief A request to activation */
+  static const int ACTIVATION = 11;
+  /** brief A message indicating the reception of |N(x)| - 1 messages*/
+  static const int SATURATION = 12;
+  /** brief A message use to solve the Election problem */
+  static const int ELECTION   = 13;
 };

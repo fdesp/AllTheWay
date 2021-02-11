@@ -35,12 +35,22 @@ public:
   static const Status UNSPECIFIED;
   /** @brief Status associated to the node that starting a protocol */
   static const Status INITIATOR;
+  /** @brief Status associated to nodes ready to process messages */
+  static const Status ACTIVE;
   /** @brief Status associated to nodes that have not received any message */
   static const Status IDLE;
   /** @brief Status associated to nodes waiting for a message */
   static const Status ACTIVE;
   /** @brief Status associated to nodes unactive nodes */
   static const Status SLEEP;
+  /** @brief Status associated to nodes processing data */
+  static const Status PROCESSING;
+  /** @brief Status associated to possible leaders */
+  static const Status SATURATED;
+  /** @brief Status associated to the coordinator of a network */
+  static const Status LEADER;
+  /** @brief Status associated to nodes that performs tasks stated by a leader*/
+  static const Status FOLLOWER;
   /** @brief Status associated to nodes that do not have any actions to do */
   static const Status DONE;
   /** @brief Default constructor */
@@ -65,6 +75,10 @@ public:
     case 2:  return "ACTIVE";   
     case 3:  return "SLEEP";    
     case 4:  return "DONE";     
+    case 5:  return "LEADER";     
+    case 6:  return "FOLLOWER";     
+    case 7:  return "SATURATED";     
+    case 8:  return "PROCESSING";     
     default: return "UNDEFINED";
     }
   }
