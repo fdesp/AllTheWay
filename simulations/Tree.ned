@@ -29,13 +29,21 @@ import dsbase.simulations.Link;
 network Tree
 {
     parameters:
-        int levels = default(4);  // 1 = root only
-        int k = default(3); // tree branching factor
         string kind;
     submodules:
-        node[(k^levels-1) / (k-1)]: <kind> like INode;
-    connections allowunconnected:
-        for i=1..sizeof(node)-1 {
-            node[i].port++ <--> Link <--> node[floor((i-1)/k)].port++;
-        }
+        node[14] : <kind> like INode;
+    connections:
+        node[0].port++  <--> Link <--> node[8].port++;
+        node[1].port++  <--> Link <--> node[8].port++;
+        node[2].port++  <--> Link <--> node[9].port++;
+        node[3].port++  <--> Link <--> node[9].port++;
+        node[4].port++  <--> Link <--> node[10].port++;
+        node[5].port++  <--> Link <--> node[10].port++;
+        node[6].port++  <--> Link <--> node[11].port++;
+        node[7].port++  <--> Link <--> node[11].port++;
+        node[8].port++  <--> Link <--> node[12].port++;
+        node[9].port++  <--> Link <--> node[12].port++;
+        node[10].port++ <--> Link <--> node[13].port++;
+        node[11].port++ <--> Link <--> node[13].port++;
+        node[12].port++ <--> Link <--> node[13].port++;
 }
