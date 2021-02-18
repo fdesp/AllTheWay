@@ -13,6 +13,9 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
+#ifndef MSGKIND_H
+#define MSGKIND_H
+
 class MsgKind {
 public:
   /** @brief A generic message */
@@ -44,3 +47,5 @@ public:
   /** brief A message use to solve the Election problem */
   static const int ELECTION    = 13;
 };
+
+#endif
