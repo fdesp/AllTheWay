@@ -35,8 +35,6 @@ public:
   static const Status UNSPECIFIED;
   /** @brief Status associated to the node that starting a protocol */
   static const Status INITIATOR;
-  /** @brief Status associated to nodes ready to process messages */
-  static const Status ACTIVE;
   /** @brief Status associated to nodes that have not received any message */
   static const Status IDLE;
   /** @brief Status associated to nodes waiting for a message */
