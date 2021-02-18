@@ -52,12 +52,17 @@ protected:
     omnetpp::cMessage*, const std::vector<int>&
   );
   /** @brief Displays a string in the simulation canvas */
-  void displayInfo(const char* info) const{
+  virtual void displayInfo(const char* info) const{
     getDisplayString().setTagArg("t", 0, info);
   }
   /** @brief Changes the color of the info string by a standard HTML color */
-  void changeInfoColor(const char* color) const{
+  virtual void changeInfoColor(const char* color) const{
     getDisplayString().setTagArg("t", 2, color);
+  }
+  /** @brief A warning message stating a node executes nil */
+  virtual void nil(omnetpp::cMessage* msg) {
+    EV_WARN << "Undefinded action, assuming (" << status.str() << ", " 
+            << msg->getName() << ") -> nil" << '\n';
   }
 public:
   /** @brief Default constructor */
