@@ -27,11 +27,10 @@ import dsbase.simulations.Link;
 network Ring
 {
     parameters:
-        @display("bgb=300,300");
         int n = default(10);
         string kind;
     submodules:
-        node[6] : <kind> like INode {
+        node[n] : <kind> like INode {
             @display("p=,,ring,");
         }
     connections:

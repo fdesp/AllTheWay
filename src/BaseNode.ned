@@ -20,7 +20,7 @@ simple BaseNode like INode
 {
     parameters:
         @display("i=device/laptop");
-        double startTime @unit(s); // The time at which simulation starts
+        double startTime @unit(s) = default(0s); // The time at which simulation starts
         bool initiator;
     gates:
         inout port[];     // Bidirectional link

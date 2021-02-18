@@ -51,6 +51,14 @@ protected:
   omnetpp::cMessage* localMulticast(
     omnetpp::cMessage*, const std::vector<int>&
   );
+  /** @brief Displays a string in the simulation canvas */
+  void displayInfo(const char* info) const{
+    getDisplayString().setTagArg("t", 0, info);
+  }
+  /** @brief Changes the color of the info string by a standard HTML color */
+  void changeInfoColor(const char* color) const{
+    getDisplayString().setTagArg("t", 2, color);
+  }
 public:
   /** @brief Default constructor */
   BaseNode() : timer(nullptr), msg(nullptr), startTime(0.0), status() { }
