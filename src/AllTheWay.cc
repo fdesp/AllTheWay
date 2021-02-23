@@ -74,6 +74,17 @@ void AllTheWay::handleMessage(omnetpp::cMessage* recvMsg){
         else 
             nil(recvMsg);
     }
+    else if(status == Status::FOLLOWER){
+        nil(recvMsg);
+    }else if(status == Status::LEADER){
+        if(recvMsg->getKind() == MsgKind::TERMINATION){
+            delete recvMsg;
+        }else
+            nil(recvMsg);
+    }
+    else
+        error("Unknow status %s\n", status.str());
+
 }
 
 void AllTheWay::setState(){
