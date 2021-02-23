@@ -1,0 +1,248 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1286 rid Ring-0-20210222-17:56:21-1802 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t dsbase.simulations.Ring n Ring cm 1
+MS id 1 d ""
+MC id 2 c AllTheWay t dsbase.AllTheWay pid 1 n node[0]
+MS id 2 d p=,,ring;i=device/laptop
+MC id 3 c AllTheWay t dsbase.AllTheWay pid 1 n node[1]
+MS id 3 d p=,,ring;i=device/laptop
+MC id 4 c AllTheWay t dsbase.AllTheWay pid 1 n node[2]
+MS id 4 d p=,,ring;i=device/laptop
+MC id 5 c AllTheWay t dsbase.AllTheWay pid 1 n node[3]
+MS id 5 d p=,,ring;i=device/laptop
+MC id 6 c AllTheWay t dsbase.AllTheWay pid 1 n node[4]
+MS id 6 d p=,,ring;i=device/laptop
+GC m 2 g 1048576 n port$i i 0 o 0
+GC m 2 g 1572864 n port$o i 0 o 1
+GC m 3 g 1048576 n port$i i 0 o 0
+GC m 3 g 1572864 n port$o i 0 o 1
+CC sm 2 sg 1572864 dm 3 dg 1048576
+CS sm 2 sg 1572864 d ""
+CC sm 3 sg 1572864 dm 2 dg 1048576
+CS sm 3 sg 1572864 d ""
+GC m 3 g 1048577 n port$i i 1 o 0
+GC m 3 g 1572865 n port$o i 1 o 1
+GC m 4 g 1048576 n port$i i 0 o 0
+GC m 4 g 1572864 n port$o i 0 o 1
+CC sm 3 sg 1572865 dm 4 dg 1048576
+CS sm 3 sg 1572865 d ""
+CC sm 4 sg 1572864 dm 3 dg 1048577
+CS sm 4 sg 1572864 d ""
+GC m 4 g 1048577 n port$i i 1 o 0
+GC m 4 g 1572865 n port$o i 1 o 1
+GC m 5 g 1048576 n port$i i 0 o 0
+GC m 5 g 1572864 n port$o i 0 o 1
+CC sm 4 sg 1572865 dm 5 dg 1048576
+CS sm 4 sg 1572865 d ""
+CC sm 5 sg 1572864 dm 4 dg 1048577
+CS sm 5 sg 1572864 d ""
+GC m 5 g 1048577 n port$i i 1 o 0
+GC m 5 g 1572865 n port$o i 1 o 1
+GC m 6 g 1048576 n port$i i 0 o 0
+GC m 6 g 1572864 n port$o i 0 o 1
+CC sm 5 sg 1572865 dm 6 dg 1048576
+CS sm 5 sg 1572865 d ""
+CC sm 6 sg 1572864 dm 5 dg 1048577
+CS sm 6 sg 1572864 d ""
+GC m 6 g 1048577 n port$i i 1 o 0
+GC m 6 g 1572865 n port$o i 1 o 1
+GC m 2 g 1048577 n port$i i 1 o 0
+GC m 2 g 1572865 n port$o i 1 o 1
+CC sm 6 sg 1572865 dm 2 dg 1048577
+CS sm 6 sg 1572865 d ""
+CC sm 2 sg 1572865 dm 6 dg 1048577
+CS sm 2 sg 1572865 d ""
+MB sm 1 tm 2 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n timer k 8 pe -1
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n timer k 8 pe 0
+ES t 0
+ME
+MB sm 1 tm 3 m initialize(0)
+ME
+MB sm 1 tm 4 m initialize(0)
+ME
+MB sm 1 tm 5 m initialize(0)
+ME
+MB sm 1 tm 6 m initialize(0)
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timer k 8 pe -1
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timer k 8 pe 0
+ES t 0
+ME
+MS id 2 d t=IDLE;p=,,ring;i=device/laptop
+MS id 3 d t=IDLE;p=,,ring;i=device/laptop
+MS id 4 d t=IDLE;p=,,ring;i=device/laptop
+MS id 5 d t=IDLE;p=,,ring;i=device/laptop
+MS id 6 d t=IDLE;p=,,ring;i=device/laptop
+
+E # 1 t 0 m 2 ce 0 msg 0
+CM id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n election k 13 pe -1
+BS id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 1
+SH sm 2 sg 1572865 pd 1
+ES t 1
+CL id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 1 cid 3
+DM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n timer k 8 pe 1
+
+E # 2 t 0 m 6 ce 0 msg 1
+CM id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n election k 13 pe -1
+BS id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 2
+SH sm 6 sg 1572865 pd 1
+ES t 1
+CL id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 2 cid 4
+DM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timer k 8 pe 2
+MS id 2 d t=PROCESSING;p=,,ring;i=device/laptop
+MS id 6 d t=PROCESSING;p=,,ring;i=device/laptop
+
+E # 3 t 1 m 6 ce 1 msg 2
+BS id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 3
+SH sm 6 sg 1572864 pd 1
+ES t 2
+CL id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 3 cid 4
+
+E # 4 t 1 m 2 ce 2 msg 3
+BS id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 4
+SH sm 2 sg 1572864 pd 1
+ES t 2
+CL id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 4 cid 4
+
+E # 5 t 2 m 5 ce 3 msg 2
+CM id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n election k 13 pe -1
+BS id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 5
+SH sm 5 sg 1572865 pd 1
+ES t 3
+CL id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 5 cid 5
+BS id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 5
+SH sm 5 sg 1572864 pd 1
+ES t 3
+CL id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 5 cid 5
+
+E # 6 t 2 m 3 ce 4 msg 3
+MS id 5 d t=PROCESSING;p=,,ring;i=device/laptop
+CM id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n election k 13 pe -1
+BS id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 6
+SH sm 3 sg 1572865 pd 1
+ES t 3
+CL id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 6 cid 6
+BS id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 6
+SH sm 3 sg 1572865 pd 1
+ES t 3
+CL id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 6 cid 6
+MS id 3 d t=PROCESSING;p=,,ring;i=device/laptop
+
+E # 7 t 3 m 6 ce 5 msg 4
+BS id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 7
+SH sm 6 sg 1572865 pd 1
+ES t 4
+CL id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 7 cid 6
+
+E # 8 t 3 m 4 ce 5 msg 2
+CM id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n election k 13 pe -1
+BS id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 8
+SH sm 4 sg 1572865 pd 1
+ES t 4
+CL id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 8 cid 7
+BS id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 8
+SH sm 4 sg 1572864 pd 1
+ES t 4
+CL id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 8 cid 7
+
+E # 9 t 3 m 4 ce 6 msg 5
+MS id 4 d t=PROCESSING;p=,,ring;i=device/laptop
+BS id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 9
+SH sm 4 sg 1572865 pd 1
+ES t 4
+CL id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 9 cid 7
+
+E # 10 t 3 m 4 ce 6 msg 3
+BS id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 10
+SH sm 4 sg 1572865 pd 1
+ES t 4
+CL id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 10 cid 7
+
+E # 11 t 4 m 2 ce 7 msg 4
+BS id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 11
+SH sm 2 sg 1572864 pd 1
+ES t 5
+CL id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 11 cid 7
+
+E # 12 t 4 m 5 ce 8 msg 6
+BS id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 12
+SH sm 5 sg 1572865 pd 1
+ES t 5
+CL id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 12 cid 7
+
+E # 13 t 4 m 3 ce 8 msg 2
+BS id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 13
+SH sm 3 sg 1572864 pd 1
+ES t 5
+CL id 2 tid 2 eid 2 etid 2 c AllTheWayMsg n election k 13 pe 13 cid 7
+
+E # 14 t 4 m 5 ce 9 msg 5
+BS id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 14
+SH sm 5 sg 1572865 pd 1
+ES t 5
+CL id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 14 cid 7
+
+E # 15 t 4 m 5 ce 10 msg 3
+BS id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 15
+SH sm 5 sg 1572865 pd 1
+ES t 5
+CL id 3 tid 3 eid 3 etid 3 c AllTheWayMsg n election k 13 pe 15 cid 7
+
+E # 16 t 5 m 3 ce 11 msg 4
+BS id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 16
+SH sm 3 sg 1572865 pd 1
+ES t 6
+CL id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 16 cid 7
+
+E # 17 t 5 m 6 ce 12 msg 6
+BS id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 17
+SH sm 6 sg 1572865 pd 1
+ES t 6
+CL id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 17 cid 7
+
+E # 18 t 5 m 2 ce 13 msg 2
+
+E # 19 t 5 m 6 ce 14 msg 5
+BS id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 19
+SH sm 6 sg 1572865 pd 1
+ES t 6
+CL id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 19 cid 7
+
+E # 20 t 5 m 6 ce 15 msg 3
+MS id 6 d t=FOLLOWER;p=,,ring;i=device/laptop
+
+E # 21 t 6 m 4 ce 16 msg 4
+BS id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 21
+SH sm 4 sg 1572865 pd 1
+ES t 7
+CL id 4 tid 4 eid 4 etid 4 c AllTheWayMsg n election k 13 pe 21 cid 7
+
+E # 22 t 6 m 2 ce 17 msg 6
+BS id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 22
+SH sm 2 sg 1572864 pd 1
+ES t 7
+CL id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 22 cid 7
+
+E # 23 t 6 m 2 ce 19 msg 5
+BS id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 23
+SH sm 2 sg 1572864 pd 1
+ES t 7
+CL id 5 tid 5 eid 5 etid 5 c AllTheWayMsg n election k 13 pe 23 cid 7
+MS id 2 d t=PROCESSING,,red;p=,,ring;i=device/laptop
+MS id 2 d t=LEADER,,red;p=,,ring;i=device/laptop
+
+E # 24 t 7 m 5 ce 21 msg 4
+MS id 5 d t=FOLLOWER;p=,,ring;i=device/laptop
+
+E # 25 t 7 m 3 ce 22 msg 6
+BS id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 25
+SH sm 3 sg 1572865 pd 1
+ES t 8
+CL id 6 tid 6 eid 6 etid 6 c AllTheWayMsg n election k 13 pe 25 cid 7
+
+E # 26 t 7 m 3 ce 23 msg 5
+MS id 3 d t=FOLLOWER;p=,,ring;i=device/laptop
+
+E # 27 t 8 m 4 ce 25 msg 6
+SE e 0 c 13 m "No more events, simulation completed -- at t=8s, event #27"
